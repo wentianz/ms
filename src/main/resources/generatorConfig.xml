@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!--添加配置忽略操作file-settings...-languages&frameworks-Schemas and DTDs -->
+
+<generatorConfiguration>
+    <classPathEntry location="F:\Warehouse\mysql\mysql-connector-java\5.1.47\mysql-connector-java-5.1.47.jar"/>
+    <!--上下文的配置-->
+    <context id="MySqlContext" targetRuntime="MyBatis3" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 为模型生成序列化方法-->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <!-- 为生成的Java模型创建一个toString方法 -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+            <property name="addRemarkComments" value="true"/>
+        </commentGenerator>
+        <!--数据库连接配置  连接驱动 连接地址  连接用户名  连接密码-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://47.94.140.9:3306/miaos"
+                        userId="root"
+                        password="Wen123..">
+        </jdbcConnection>
+
+
+        <!--JDBC解析类型，默认值为false，当参数值为false时，DECIMAL和NUMERI类型解析为Integer，为true时类型解析为java.math.BigDecimal-->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+
+        <!--实体Bean生成的路径地址-->
+        <javaModelGenerator targetPackage="cn.wen.ms.dataobject" targetProject="src\main\java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="true"/>
+            <!-- 从数据库返回的值被清理前后的空格 -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+
+        <!--生成实体Bean对应的Mapper.xml文件的地址-->
+        <sqlMapGenerator targetPackage="resources/mapper" targetProject="src/main">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+
+        <!--数据库操作接口Mapper生成的地址-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.wen.ms.dao" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+
+    <!--    <table  tableName="user_info" domainObjectName="UserDO" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"
+        enableCountByExample="false" selectByExampleQueryId="false"/>&ndash;&gt;-->
+        <table  tableName="promo" domainObjectName="PromoDO" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"
+                enableCountByExample="false" selectByExampleQueryId="false"/>
+        <!--<table  tableName="sequence_info" domainObjectName="SequenceDO" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"
+                enableCountByExample="false" selectByExampleQueryId="false"/>-->
+       <!-- <table  tableName="item" domainObjectName="ItemDO" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"
+                enableCountByExample="false" selectByExampleQueryId="false"/>
+-->
+
+       <!-- <table  tableName="item_stock" domainObjectName="ItemStockDO" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"
+                enableCountByExample="false" selectByExampleQueryId="false"/>-->
+      <!--  <table  tableName="user_password" domainObjectName="UserPasswordDO" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"
+                enableCountByExample="false" selectByExampleQueryId="false"/>-->
+        <!--<table tableName="%">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>-->
+        <!--  // <table schema="" tableName="store" domainObjectName="Store"/>-->
+    </context>
+</generatorConfiguration>
