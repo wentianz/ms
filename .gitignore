@@ -6,8 +6,8 @@
 # Files for the Dalvik VM
 *.dex
 
-# Java class files
-*.class
+# Java class file
+*.classs
 */application.properties
 */generatorConfig.xml
 # Generated files
